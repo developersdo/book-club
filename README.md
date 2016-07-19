@@ -28,4 +28,8 @@ To run specs:
 
 ## How to contribute
 
-TODO.
+* First, Make a Fork to you Github profile.
+* Second, Do Git Clone from your repository profile.
+* Third, Develop code, then push to your Github profile.
+* Fourth, Do Pull request to developersdo repository.
+
