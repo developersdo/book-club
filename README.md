@@ -28,8 +28,14 @@ To run specs:
 
 ## How to contribute
 
-* First, Make a Fork to you Github profile.
-* Second, Do Git Clone from your repository profile.
-* Third, Develop code, then push to your Github profile.
-* Fourth, Do Pull request to developersdo repository.
+1. Fork the repository to your github account
+1. `git clone` from your repositoy to your local PC
+1. See the "Issues" section and grab one that you would like to work on
+1. Code code code
+1. Push your changes to your fork
+2. Open a Pull Request so it is reviewed by the mods
 
+Articles that help: 
+- https://guides.github.com/introduction/flow/
+- https://help.github.com/articles/using-pull-requests/
+- https://gist.github.com/Chaser324/ce0505fbed06b947d962
