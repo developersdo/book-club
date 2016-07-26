@@ -23,5 +23,13 @@ namespace DevDo.BookClub.Models
         [Required(ErrorMessage = "La imágen es requerida..")]
         [Display(Name = "Imágen")]
         public string CoverUrl { get; set; }
+
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            if (ISBN.Length > 13)
+            {
+                yield return new ValidationResult("El ISBN no puede contener mas de 13 digitos");
+            }
+        }
     }
 }
