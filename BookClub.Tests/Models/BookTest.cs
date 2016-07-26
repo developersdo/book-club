@@ -28,11 +28,11 @@ namespace DevDo.BookClub.Tests.Models
                 };
                 var ValidationResult = new List<ValidationResult>();
                 var actual = Validator.TryValidateObject(book, new ValidationContext(book), ValidationResult, true);
-                Assert.True(actual);
+                Assert.True(actual, "Expected validation to pass.");
             }
 
             [Fact]
-            public void BookHasAnISBNWithMoreThanThirteenDigits()
+            public void BookHasAnISBNWithMoreThanThirteenDigits_ReturnsValidationError()
             {
                 var book = new DevDo.BookClub.Models.Book
                 {
@@ -43,11 +43,11 @@ namespace DevDo.BookClub.Tests.Models
                 };
                 var ValidationResult = new List<ValidationResult>();
                 var actual = Validator.TryValidateObject(book, new ValidationContext(book), ValidationResult, true);
-                Assert.False(actual);
+                Assert.False(actual, "Expected validation to fail.");
             }
 
             [Fact]
-            public void BookDoesntHaveTitle()
+            public void BookDoesntHaveTitle_ReturnsValidationError()
             {
                 var book = new DevDo.BookClub.Models.Book
                 {
@@ -58,11 +58,11 @@ namespace DevDo.BookClub.Tests.Models
                 };
                 var ValidationResult = new List<ValidationResult>();
                 var actual = Validator.TryValidateObject(book, new ValidationContext(book), ValidationResult, true);
-                Assert.False(actual);
+                Assert.False(actual, "Expected validation to fail.");
             }
 
             [Fact]
-            public void BookDoesntHaveAuthor()
+            public void BookDoesntHaveAuthor_ReturnsValidationError()
             {
                 var book = new DevDo.BookClub.Models.Book
                 {
@@ -73,11 +73,11 @@ namespace DevDo.BookClub.Tests.Models
                 };
                 var ValidationResult = new List<ValidationResult>();
                 var actual = Validator.TryValidateObject(book, new ValidationContext(book), ValidationResult, true);
-                Assert.False(actual);
+                Assert.False(actual, "Expected validation to fail.");
             }
 
             [Fact]
-            public void BookDoesntHaveISBN()
+            public void BookDoesntHaveISBN_ReturnsValidationError()
             {
                 var book = new DevDo.BookClub.Models.Book
                 {
@@ -88,11 +88,11 @@ namespace DevDo.BookClub.Tests.Models
                 };
                 var ValidationResult = new List<ValidationResult>();
                 var actual = Validator.TryValidateObject(book, new ValidationContext(book), ValidationResult, true);
-                Assert.False(actual);
+                Assert.False(actual, "Expected validation to fail.");
             }
 
             [Fact]
-            public void BookDoesntHaveCover()
+            public void BookDoesntHaveCover_ReturnsValidationError()
             {
                 var book = new DevDo.BookClub.Models.Book
                 {
@@ -103,9 +103,8 @@ namespace DevDo.BookClub.Tests.Models
                 };
                 var ValidationResult = new List<ValidationResult>();
                 var actual = Validator.TryValidateObject(book, new ValidationContext(book), ValidationResult, true);
-                Assert.False(actual);
+                Assert.False(actual, "Expected validation to fail.");
             }
-
         }
         }
     }
