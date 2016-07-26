@@ -59,7 +59,7 @@ namespace DevDo.BookClub.Tests.Models
                 };
                 var ValidationResult = new List<ValidationResult>();
                 var actual = Validator.TryValidateObject(book, new ValidationContext(book), ValidationResult, true);
-                Assert.True(actual, "Expected validation to fail.");
+                Assert.False(actual, "Expected validation to fail.");
             }           
             }
         }
