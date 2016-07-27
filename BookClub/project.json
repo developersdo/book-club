@@ -1,14 +1,49 @@
 {
   "version": "1.0.0-*",
-
   "dependencies": {
-    "NETStandard.Library": "1.6.0",
-    "System.ComponentModel.Annotations": "4.1.0"
+    "System.ComponentModel.Annotations": "4.1.0",
+    "Microsoft.NETCore.App": {
+      "version": "1.0.0-rc2-3002702",
+      "type": "platform"
+    },
+    "Microsoft.AspNetCore.Server.IISIntegration": "1.0.0-rc2-final",
+    "Microsoft.AspNetCore.Server.Kestrel": "1.0.0-rc2-final"
   },
-
   "frameworks": {
     "netstandard1.6": {
       "imports": "dnxcore50"
+    },
+    "netcoreapp1.0": {
+      "imports": [
+        "dotnet5.6",
+        "dnxcore50",
+        "portable-net45+win8"
+      ]
     }
+  },
+  "tools": {
+    "Microsoft.AspNetCore.Server.IISIntegration.Tools": {
+      "version": "1.0.0-preview1-final",
+      "imports": "portable-net45+win8+dnxcore50"
+    }
+  },
+  "buildOptions": {
+    "emitEntryPoint": true,
+    "preserveCompilationContext": true
+  },
+  "runtimeOptions": {
+    "gcServer": true
+  },
+  "publishOptions": {
+    "include": [
+      "wwwroot",
+      "web.config"
+    ]
+  },
+  "scripts": {
+    "postpublish": [ "dotnet publish-iis --publish-folder %publish:OutputPath% --framework %publish:FullTargetFramework%" ]
+  },
+  "tooling": {
+    "defaultNamespace": "DevDo.BookClub"
   }
 }
