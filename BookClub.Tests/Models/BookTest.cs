@@ -41,6 +41,9 @@ namespace DevDo.BookClub.Tests.Models
                     ISBN = "020161622X9409",
                     CoverUrl = "https://images-na.ssl-images-amazon.com/images/I/41BKx1AxQWL._SX258_BO1,204,203,200_.jpg"
                 };
+                var ValidationResult = new List<ValidationResult>();
+                var actual = Validator.TryValidateObject(book, new ValidationContext(book), ValidationResult, true);
+                Assert.False(actual, "Expected validation to fail.");
             }
 
             [Theory()]
