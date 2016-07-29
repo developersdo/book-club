@@ -1,3 +1,5 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/82n1p6vpuar8vrs6/branch/master?svg=true)](https://ci.appveyor.com/project/RaulMonteroC/book-club/branch/master)
+
 ## Getting Started
 
 Make sure you have setup your environment correctly, refer to [this](https://www.microsoft.com/net/core) site to get started.
