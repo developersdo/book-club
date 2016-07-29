@@ -20,7 +20,8 @@ namespace DevDo.BookClub.Tests.Models
             [Fact]
             public void BookHasNecessaryProperties()
             {
-                var book = new DevDo.BookClub.Models.Book {
+                var book = new DevDo.BookClub.Models.Book
+                {
                     Title = "The Pragmatic Programmer",
                     Author = "Andy Hunt",
                     ISBN = "020161622X",
@@ -46,65 +47,24 @@ namespace DevDo.BookClub.Tests.Models
                 Assert.False(actual, "Expected validation to fail.");
             }
 
-            [Fact]
-            public void BookDoesntHaveTitle_ReturnsValidationError()
+            [Theory()]
+            [InlineData(null, "Andy Hunt", "020161622X9409", "https://images-na.ssl-images-amazon.com/images/I/41BKx1AxQWL._SX258_BO1,204,203,200_.jpg")]
+            [InlineData("The Pragmatic Programmer", null, "020161622X9409", "https://images-na.ssl-images-amazon.com/images/I/41BKx1AxQWL._SX258_BO1,204,203,200_.jpg")]
+            [InlineData("The Pragmatic Programmer", "Andy Hunt", null, "https://images-na.ssl-images-amazon.com/images/I/41BKx1AxQWL._SX258_BO1,204,203,200_.jpg")]
+            [InlineData("The Pragmatic Programmer", "Andy Hunt", "020161622X9409", null)]
+            public void BookDoestHaveNecessaryProperties_ReturnsValidationError(string title, string author, string isbn, string coverURL)
             {
                 var book = new DevDo.BookClub.Models.Book
                 {
-                    Title = null,
-                    Author = "Andy Hunt",
-                    ISBN = "020161622X",
-                    CoverUrl = "https://images-na.ssl-images-amazon.com/images/I/41BKx1AxQWL._SX258_BO1,204,203,200_.jpg"
+                    Title = title,
+                    Author = author,
+                    ISBN = isbn,
+                    CoverUrl = coverURL
                 };
                 var ValidationResult = new List<ValidationResult>();
                 var actual = Validator.TryValidateObject(book, new ValidationContext(book), ValidationResult, true);
                 Assert.False(actual, "Expected validation to fail.");
             }
-
-            [Fact]
-            public void BookDoesntHaveAuthor_ReturnsValidationError()
-            {
-                var book = new DevDo.BookClub.Models.Book
-                {
-                    Title = "The Pragmatic Programmer",
-                    Author = null,
-                    ISBN = "020161622X",
-                    CoverUrl = "https://images-na.ssl-images-amazon.com/images/I/41BKx1AxQWL._SX258_BO1,204,203,200_.jpg"
-                };
-                var ValidationResult = new List<ValidationResult>();
-                var actual = Validator.TryValidateObject(book, new ValidationContext(book), ValidationResult, true);
-                Assert.False(actual, "Expected validation to fail.");
-            }
-
-            [Fact]
-            public void BookDoesntHaveISBN_ReturnsValidationError()
-            {
-                var book = new DevDo.BookClub.Models.Book
-                {
-                    Title = "The Pragmatic Programmer",
-                    Author = "Andy Hunt",
-                    ISBN = null,
-                    CoverUrl = "https://images-na.ssl-images-amazon.com/images/I/41BKx1AxQWL._SX258_BO1,204,203,200_.jpg"
-                };
-                var ValidationResult = new List<ValidationResult>();
-                var actual = Validator.TryValidateObject(book, new ValidationContext(book), ValidationResult, true);
-                Assert.False(actual, "Expected validation to fail.");
-            }
-
-            [Fact]
-            public void BookDoesntHaveCover_ReturnsValidationError()
-            {
-                var book = new DevDo.BookClub.Models.Book
-                {
-                    Title = "The Pragmatic Programmer",
-                    Author = "Andy Hunt",
-                    ISBN = "020161622X",
-                    CoverUrl = null
-                };
-                var ValidationResult = new List<ValidationResult>();
-                var actual = Validator.TryValidateObject(book, new ValidationContext(book), ValidationResult, true);
-                Assert.False(actual, "Expected validation to fail.");
-            }
-        }
         }
     }
+}
